@@ -11191,6 +11191,8 @@ p {
   display: block;
   position: relative;
   overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .portfolio-card .portfolio-card-img {
@@ -11205,15 +11207,13 @@ p {
   -ms-transform: translate(-50%, -50%);
       transform: translate(-50%, -50%);
   text-align: center;
-  visibility: hidden;
   opacity: 0;
-  background-image: -webkit-linear-gradient(bottom, #e1dfed 0%, rgba(225, 223, 237, 0.7) 99%, rgba(225, 223, 237, 0.8) 100%);
-  background-image: linear-gradient(to top, #e1dfed 0%, rgba(225, 223, 237, 0.7) 99%, rgba(225, 223, 237, 0.8) 100%);
-  -webkit-transition: all, 0.3s;
-  transition: all, 0.3s;
-  width: 0;
-  height: 0;
-  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.7);
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  width: 100%;
+  height: 100%;
+  border-radius: 0; /* Ensure it covers the card, removing previous circular reveal style */
   overflow: hidden;
 }
 
@@ -11229,18 +11229,32 @@ p {
   position: absolute;
   top: 50%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-      transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, calc(-50% + 20px));
+  -ms-transform: translate(-50%, calc(-50% + 20px));
+      transform: translate(-50%, calc(-50% + 20px));
   width: 100%;
+  opacity: 0;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.portfolio-card .portfolio-card-overlay .portfolio-card-caption h4 {
+  color: #FFFFFF;
+}
+
+.portfolio-card .portfolio-card-overlay .portfolio-card-caption p {
+  color: #DDDDDD;
 }
 
 .portfolio-card:hover .portfolio-card-overlay {
   opacity: 1;
-  visibility: visible;
-  width: 100%;
-  height: 100%;
-  border-radius: 0;
+}
+
+.portfolio-card:hover .portfolio-card-caption {
+  opacity: 1;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
 }
 
 @media (max-width: 767.98px) {
